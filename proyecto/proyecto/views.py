@@ -7,8 +7,6 @@ from django.shortcuts import render
 
 def template (request):
     context = {
-        "marca" : "volkswagen",
-        "modelo" : "gol",
-        "motor" : "diesel"
+        "lista":["volkswagen","gol","diesel"]
     }
     return render(request, "template.html", context=context)
