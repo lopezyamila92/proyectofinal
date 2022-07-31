@@ -10,3 +10,8 @@ def template (request):
         "lista":["volkswagen","gol","diesel"]
     }
     return render(request, "template.html", context=context)
+
+
+def ford (self):
+    return render(self, "preentrga.html")
+

@@ -2,6 +2,7 @@ from enum import auto
 from hashlib import new
 from itertools import product
 from multiprocessing import context
+from django.http import HttpResponse
 from django.shortcuts import render
 from autos.models import Autos
 
@@ -20,4 +21,19 @@ def list_autos(request):
     } 
     return render(request, "products_list.html", context=context)
 
+def ford (self):
+    return render(self, "preentrga.html")
 
+
+
+
+def ford_autos(request):
+    new_autos = Autos.objects.create(
+        title = 'coche nuevo', 
+        description = 'unidad de preentrega', 
+        author = 'ford oficial'
+        )
+    context = {
+        'new_autos':new_autos
+    }
+    return render(request, 'preentrega.html', context=context)
