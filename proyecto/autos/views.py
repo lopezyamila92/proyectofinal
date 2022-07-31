@@ -7,6 +7,10 @@ from django.shortcuts import render
 from autos.models import Autos
 
 
+def inicio (self):
+    return HttpResponse("vista de inicio")
+
+
 def create_autos(request):
     create_autos = Autos.objects.create(name = "ford ranger", price = 1000, stock = 30)
     context = {
@@ -21,8 +25,6 @@ def list_autos(request):
     } 
     return render(request, "products_list.html", context=context)
 
-def ford (self):
-    return render(self, "preentrga.html")
 
 
 

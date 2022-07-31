@@ -5,6 +5,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
+def inicio (self):
+    return render(self, "inicio.html")
+
 def template (request):
     context = {
         "lista":["volkswagen","gol","diesel"]
@@ -12,6 +15,5 @@ def template (request):
     return render(request, "template.html", context=context)
 
 
-def ford (self):
-    return render(self, "preentrga.html")
+
 

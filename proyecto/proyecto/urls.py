@@ -13,10 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from xml.etree.ElementInclude import include
 from django.contrib import admin
 from django.urls import path
-from proyecto.views import ford
 from proyecto.views import template
 from autos.views import create_autos , list_autos
 from django.urls import path, include
@@ -24,7 +22,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ford/', ford, name= "ford"),
     path('ford/', include ("autos.urls")),
     #path('template/', template, name="template"),
     #path('create_autos/', create_autos, name = "create_autos"),
