@@ -16,13 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from proyecto.views import template
-from autos.views import create_autos
-from autos.views import list_autos
+from autos.views import create_autos , list_autos
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('template/', template, name="template"),
     path('create_autos/', create_autos, name = "create_autos"),
-    path('list_autos/', list_autos, name= "list_autos"),
+    path('list_autos/', list_autos, name = "list_autos"),
 ]

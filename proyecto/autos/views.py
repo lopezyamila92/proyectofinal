@@ -14,9 +14,9 @@ def create_autos(request):
     return render(request, "new_product.html", context=context)
 
 def list_autos(request):
-    autos = Autos.objects.all()
+    inventario = Autos.objects.all()
     context = {
-        "autos": autos
+        "inventario": inventario
     } 
     return render(request, "products_list.html", context=context)
 
