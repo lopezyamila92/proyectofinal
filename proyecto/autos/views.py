@@ -8,7 +8,7 @@ from autos.models import Autos
 
 
 def inicio (self):
-    return HttpResponse("vista de inicio")
+    return render(self, "inicio.html")
 
 
 def create_autos(request):
@@ -25,7 +25,8 @@ def list_autos(request):
     } 
     return render(request, "products_list.html", context=context)
 
-
+def servicio (self):
+    return render(self, "servicio.html")
 
 
 

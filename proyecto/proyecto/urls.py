@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from proyecto.views import template
-from autos.views import create_autos , list_autos
+from proyecto.views import template , servicio
+from autos.views import create_autos , list_autos 
 from django.urls import path, include
 
 

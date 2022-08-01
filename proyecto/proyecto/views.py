@@ -14,6 +14,7 @@ def template (request):
     }
     return render(request, "template.html", context=context)
 
-
+def servicio (self):
+    return render(self, "servicio.html")
 
 
