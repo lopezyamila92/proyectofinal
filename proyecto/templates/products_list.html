@@ -1,3 +1,8 @@
+{% extends "padre.html" %}
+
+{% block bloqueQueCambia %}
+
+
 {% for product in products %}
 
 
@@ -6,3 +11,7 @@
 <h2>El stock del producto es {{product.stock}}</h2>
 
 {% endfor %}
+
+
+
+{% endblock bloqueQueCambia %}
