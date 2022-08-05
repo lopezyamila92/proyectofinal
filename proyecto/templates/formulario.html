@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+
+    formulario
+    
+{% endblock %}
+
+{% block bloqueQueCambia %}
+
+<form action="" method="post">
+
+{% csrf_token %}
+
+    <p><input type="text" name="usuario" placeholder="usuario"></p>
+
+
+    <p></p><input type="text" name="contraseña" placeholder="contraseña"></p>
+
+
+    <p></p><input type="submit" name="enviar"></p>
+
+</form>
+
+
+{% endblock bloqueQueCambia %}
