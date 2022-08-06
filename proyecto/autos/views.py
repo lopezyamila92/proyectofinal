@@ -1,7 +1,11 @@
 
 from contextlib import _RedirectStream
+from itertools import product
+from multiprocessing import context
+from re import search
+from urllib import response
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect 
 from autos.models import Autos
 from autos.forms import Formularios_productos
 
@@ -58,3 +62,9 @@ def primer_formulario(request):
     if request.method == "POST":
         Autos.objects.create(name = request.POST["name"])
     return render (request, "formulario.html", context = {})
+
+def search_products(request):
+    search = request.GET["search"]
+    products = Autos.objects.filter(name__icontains=search)
+    context = {"products" :products}
+    return render(request,"products/search_products.html", context=context)
