@@ -1,12 +1,9 @@
-from enum import auto
-from hashlib import new
-from itertools import product
-from multiprocessing import context
-from unicodedata import name
-from django.http import HttpResponse
-from django.shortcuts import render
-from autos.models import Autos
 
+from contextlib import _RedirectStream
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from autos.models import Autos
+from autos.forms import Formularios_productos
 
 def inicio (self):
     return render(self, "inicio.html")
@@ -15,13 +12,22 @@ def inicio (self):
 def create_autos(request):
 
     if request.method == "POST" :
+        form = Formularios_productos(request.POST)
+
+        if form.is_valid():
+            Autos.objects.create(
+                name = form.cleaned_data["name"],
+                price = form.cleaned_data ["price"],
+                description = form.cleaned_data["description"],
+                stock = form.cleaned_data["stock"]
+            )
+            return redirect(list_autos)
 
 
-        create_autos = Autos.objects.create(name = "ford ranger", price = 1000, stock = 30)
-        context = {
-            "new_product": create_autos
-        }
-    elif request.method == "GET":    
+
+    elif request.method == "GET":
+        form = Formularios_productos()
+        context = {"form": form }    
         return render(request, "new_product.html", context=context)
 
 def list_autos(request):
@@ -48,7 +54,7 @@ def ford_autos(request):
     return render(request, 'preentrega.html', context=context)
 
 def primer_formulario(request):
-    print(request.mehtod)
+    print(request.method)
     if request.method == "POST":
         Autos.objects.create(name = request.POST["name"])
     return render (request, "formulario.html", context = {})
