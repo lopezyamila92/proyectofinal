@@ -67,4 +67,4 @@ def search_products(request):
     search = request.GET["search"]
     products = Autos.objects.filter(name__icontains=search)
     context = {"products" :products}
-    return render(request,"products/search_products.html", context=context)
+    return render(request,"search_products.html", context=context)
