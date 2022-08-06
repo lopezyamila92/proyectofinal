@@ -8,11 +8,11 @@ from django.shortcuts import render
 def inicio (self):
     return render(self, "inicio.html")
 
-def template (request):
+def categorias (request):
     context = {
-        "lista":["volkswagen","gol","diesel"]
+        "lista":["SUV", "Pick-ups", "Sedan", "Deportivos"]
     }
-    return render(request, "template.html", context=context)
+    return render(request, "categorias.html", context=context)
 
 def servicio (self):
     return render(self, "servicio.html")

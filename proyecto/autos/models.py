@@ -1,5 +1,4 @@
 
-from unicodedata import name
 from django.db import models
 
 class Autos(models.Model):
@@ -9,13 +8,15 @@ class Autos(models.Model):
     is_active = models.BooleanField(default=True)
     creation_date = models.DateField(auto_now_add=True, null=True, blank=True)
     stock = models.IntegerField()
+
     def __str__(self) -> str:
         return f"{self.name}"
 
 
 
-class Category(models.Model):
+class Categorias(models.Model):
     name = models.CharField(max_length=50)
+    categoria = models.CharField(max_length=30)
 
 class servicio(models.Model):
     name = models.CharField(max_length=40)
