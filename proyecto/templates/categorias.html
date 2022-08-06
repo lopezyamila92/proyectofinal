@@ -1,11 +1,10 @@
 {% extends "padre.html" %}
 {% block bloqueQueCambia %}
+<br/>
 {% for elemento in lista %}
 
-
-<a class="navbar-brand" href="/ford/search-products/?search={{elemento}}">{{elemento}}</a>
-
-
+      <a href="/ford/search-products/?search={{elemento}}" class="btn btn-primary">{{elemento}}</a>
 
 {%endfor%}
+
 {% endblock bloqueQueCambia %}

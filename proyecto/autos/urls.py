@@ -1,5 +1,3 @@
-
-from re import search
 from django.urls import path
 from proyecto.views import categorias
 from proyecto.views import inicio

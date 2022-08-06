@@ -1,9 +1,4 @@
-from lib2to3.pgen2.token import GREATER
-from multiprocessing import context
-from unicodedata import name
-from django.http import HttpResponse
 from django.shortcuts import render
-
 
 def inicio (self):
     return render(self, "inicio.html")

@@ -5,10 +5,19 @@
 
 {% for product in products %}
 
-
-<h1>El nombre del producto es {{product.name}}</h1>
-<h2>El precio del producto es {{product.price}}</h2>
-<h2>El stock del producto es {{product.stock}}</h2>
+<div class="card text-center">
+    <div class="card-header">
+      SEDAN
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{product.description}}</p>
+      <a href="#" class="btn btn-primary">Conoce Más!</a>
+    </div>
+    <div class="card-footer text-muted">
+      Consulte Disponibilidad
+    </div>
+  </div>
 
 {% endfor %}
 

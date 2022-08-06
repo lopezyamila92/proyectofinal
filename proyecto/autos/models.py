@@ -1,4 +1,3 @@
-
 from django.db import models
 
 class Autos(models.Model):
@@ -16,7 +15,6 @@ class Autos(models.Model):
 
 class Categorias(models.Model):
     name = models.CharField(max_length=50)
-    categoria = models.CharField(max_length=30)
 
 class servicio(models.Model):
     name = models.CharField(max_length=40)
