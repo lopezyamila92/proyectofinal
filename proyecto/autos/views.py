@@ -1,15 +1,7 @@
-
-from contextlib import _RedirectStream
-from email.errors import CloseBoundaryNotFoundDefect
-from itertools import product
-from multiprocessing import context
-from re import search
-from urllib import response
-from django.http import HttpResponse
-from django.shortcuts import render, redirect 
-from autos.models import Autos
+from django.shortcuts import redirect, render
 from autos.forms import Formularios_productos
-from proyecto.views import categorias
+from autos.models import Autos
+
 
 def inicio (self):
     return render(self, "inicio.html")
@@ -22,11 +14,10 @@ def create_autos(request):
 
         if form.is_valid():
             Autos.objects.create(
-                name = form.cleaned_data["name"],
+                name = form.cleaned_data["type"]+" "+form.cleaned_data["name"],
                 price = form.cleaned_data ["price"],
                 description = form.cleaned_data["description"],
-                stock = form.cleaned_data["stock"],
-                categoria = form.cleaned_data["categoria"]
+                stock = form.cleaned_data["stock"]
             )
             return redirect(list_autos)
 
