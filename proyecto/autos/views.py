@@ -81,21 +81,20 @@ def update_product(request, pk):
     if request.method == "POST":
         form = Formularios_productos(request.POST)
         if form.is_valid():
-                product.name = form.cleaned_data["type"]+" "+form.cleaned_data["name"],
-                product.price = form.cleaned_data ["price"],
-                product.description = form.cleaned_data["description"],
+                product = Autos.objects.get(id=pk)
+                product.name = form.cleaned_data["name"]
+                product.price = form.cleaned_data ["price"]
+                product.description = form.cleaned_data["description"]
                 product.stock = form.cleaned_data["stock"]
                 product.save()
                 return redirect(list_autos)
-
-
-
     elif request.method == "GET":
         product = Autos.objects.get(id=pk)
         form = Formularios_productos(initial = {
-                                    "name" :product.name ,
-                                    "Stock" :product.stock,
-                                    "description :product.description"
-                                    "precio" :product.price })
+                                    "name" :product.name,
+                                    "price" :product.price,
+                                    "description" :product.description, 
+                                    "stock" :product.stock,
+                                    })
         context = {"form":form}    
         return render(request, "update_product.html", context=context)
