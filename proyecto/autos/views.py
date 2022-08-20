@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from autos.forms import Formularios_productos
 from autos.models import Autos
 from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def inicio (self):
@@ -100,7 +101,7 @@ def update_product(request, pk):
         context = {"form":form}    
         return render(request, "update_product.html", context=context)
 
-class List_articles(ListView):
+class List_articles(LoginRequiredMixin, ListView):
     model = Autos
     template_name = "list_articles.html"
 
