@@ -12,4 +12,7 @@ def categorias (request):
 def servicio (self):
     return render(self, "servicio.html")
 
+def index(request):
+    return render(request, 'inicio.html') #cuando no ponemo nada, que sea local host solamente
+
 
