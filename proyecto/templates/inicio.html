@@ -1,7 +1,17 @@
 {% extends "padre.html" %}
 
+{% block titulo %}
+    Inicio
+{% endblock %}
+
 {% block bloqueQueCambia %}
-    <h1> Outdoor Ford </h1>
+    <h1>Este es el index</h1>
+
+{% if message %}
+
+    <h2>{{message}}</h2>
+
+{% endif %}
 
 
 {% endblock bloqueQueCambia %}

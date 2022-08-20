@@ -22,6 +22,7 @@ from proyecto.views import inicio
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', inicio, name = 'inicio'),
-    path('ford/', include ("autos.urls")),
+    path('ford/', include ('autos.urls')),
+    path ('users/', include ('users.urls'))
     
 ]
