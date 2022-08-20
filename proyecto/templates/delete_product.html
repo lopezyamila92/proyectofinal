@@ -1,0 +1,24 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+
+    borrar producto
+    
+{% endblock %}
+
+{% block bloqueQueCambia %}
+
+<p>Nombre del producto: {{product.name}}</p>
+<p>Stock del producto: {{product.Stock}}</p>
+<p>Precio del producto: {{product.precio}}</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+        <p><input type="submit" value="borar"></p>
+
+</form>
+
+
+
+{% endblock bloqueQueCambia %}

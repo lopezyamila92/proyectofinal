@@ -3,8 +3,8 @@
 {% block bloqueQueCambia %}
 
 
-{% for product in products %}
-<br/>
+    {% for article in object_list %}
+    <br/>
 <div class="card" style="width: 18rem;">
     <img src="https://www.diariolachayota.com/wp-content/uploads/2020/10/repuestos-ford-motor-company-originales-D_NQ_NP_891933-MLV28074904801_092018-F-1024x475.jpg" class="card-img-top" alt="...">
     <div class="card-body">
@@ -21,6 +21,8 @@
 <!--<h1>El nombre del producto es {{product.name}}</h1>
 <h2>El precio del producto es {{product.price}}</h2>
 <h2>El stock del producto es {{product.stock}}</h2>-->
+
+
 
 {% endfor %}
 

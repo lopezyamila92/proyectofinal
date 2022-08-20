@@ -1,6 +1,11 @@
-from django.shortcuts import redirect, render
+from enum import auto
+from itertools import product
+from multiprocessing import context
+from tkinter.tix import AUTO
+from django.shortcuts import redirect, render 
 from autos.forms import Formularios_productos
 from autos.models import Autos
+from django.views.generic import ListView
 
 
 def inicio (self):
@@ -62,3 +67,45 @@ def search_products(request):
     products = Autos.objects.filter(name__icontains=search)
     context = {"products" :products}
     return render(request,"search_products.html", context=context)
+
+def delete_product(request, pk):
+    if request.method == "GET":
+        product = Autos.objects.get(id=pk)
+        context = {"product":product}
+        return render(request, "delete_product.html", context=context)
+    elif request.method == "POST":
+        product = Autos.objects.get(id=pk)
+        product.delete()
+        return redirect(list_autos)
+
+def update_product(request, pk):
+    if request.method == "POST":
+        form = Formularios_productos(request.POST)
+        if form.is_valid():
+                product = Autos.objects.get(id=pk)
+                product.name = form.cleaned_data["name"]
+                product.price = form.cleaned_data ["price"]
+                product.description = form.cleaned_data["description"]
+                product.stock = form.cleaned_data["stock"]
+                product.save()
+                return redirect(list_autos)
+    elif request.method == "GET":
+        product = Autos.objects.get(id=pk)
+        form = Formularios_productos(initial = {
+                                    "name" :product.name,
+                                    "price" :product.price,
+                                    "description" :product.description, 
+                                    "stock" :product.stock,
+                                    })
+        context = {"form":form}    
+        return render(request, "update_product.html", context=context)
+
+class List_articles(ListView):
+    model = Autos
+    template_name = "list_articles.html"
+
+
+
+
+
+
