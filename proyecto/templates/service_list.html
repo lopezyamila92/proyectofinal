@@ -1,0 +1,27 @@
+{% extends "padre.html" %}
+
+{% block bloqueQueCambia %}
+    <h1> Lo que tu FORD necesita, nosotros lo tenemos!</h1>
+
+{% for service in service %}    
+
+
+    <br/>
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.diariolachayota.com/wp-content/uploads/2020/10/repuestos-ford-motor-company-originales-D_NQ_NP_891933-MLV28074904801_092018-F-1024x475.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{service.name}}</h5>
+          <p class="card-text">Precio: {{service.price}}</p>
+          <p class="card-text">Stock:{{service.stock}} </p>
+        </div>
+      </div>
+
+{% endfor %}
+
+
+
+
+
+
+{% endblock bloqueQueCambia %}
+
