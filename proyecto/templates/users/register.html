@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block bloqueQueCambia %}
-<!--vamos a crear un formulario con el form-->
+
 <form action="" method="POST">
 {% csrf_token %}
 
     <table>
 
-        {{form.as_table}}   <!--usamos el formulario-->
+        {{form.as_table}}   
 
     </table>
 
@@ -20,7 +20,7 @@
     </form>
 
     {% if error %}
-    <p style="color:red;">{{error}}</p> <!--campo para mostrar errores-->
+    <p style="color:red;">{{error}}</p> 
     {% endif %}
 
 {% endblock bloqueQueCambia %}

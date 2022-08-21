@@ -16,13 +16,14 @@ def inicio (self):
 def create_autos(request):
     if request.user.is_superuser:
         if request.method == "POST" :
-            form = Formularios_productos(request.POST)
+            form = Formularios_productos(request.POST, request.FILES)
             if form.is_valid():
                 Autos.objects.create(
                     name = form.cleaned_data["type"]+" "+form.cleaned_data["name"],
                     price = form.cleaned_data ["price"],
                     description = form.cleaned_data["description"],
-                    stock = form.cleaned_data["stock"]
+                    stock = form.cleaned_data["stock"],
+                    image = form.cleaned_data['image']
                 )
                 return redirect(list_autos)
 
@@ -40,6 +41,8 @@ def list_autos(request):
             context = {
                 "products": products
             } 
+
+            print(products)
             return render(request, "products_list.html", context=context)
     return redirect("login")
 
@@ -89,13 +92,14 @@ def delete_product(request, pk):
 def update_product(request, pk):
     
     if request.method == "POST":
-        form = Formularios_productos(request.POST)
+        form = Formularios_productos(request.POST, request.FILES)
         if form.is_valid():
                 product = Autos.objects.get(id=pk)
                 product.name = form.cleaned_data["name"]
                 product.price = form.cleaned_data ["price"]
                 product.description = form.cleaned_data["description"]
                 product.stock = form.cleaned_data["stock"]
+                product.image = form.cleaned_data["image"]
                 product.save()
                 return redirect(list_autos)
     elif request.method == "GET":
@@ -105,6 +109,7 @@ def update_product(request, pk):
                                     "price" :product.price,
                                     "description" :product.description, 
                                     "stock" :product.stock,
+                                    "image" : product.image
                                     })
         context = {"form":form}    
         return render(request, "update_product.html", context=context)
