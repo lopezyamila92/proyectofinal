@@ -7,7 +7,7 @@ from autos.forms import Formularios_productos
 from autos.models import Autos
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth.decorators import login_required
 
 def inicio (self):
     return render(self, "inicio.html")
@@ -34,13 +34,17 @@ def create_autos(request):
         context = {"form": form }    
         return render(request, "new_product.html", context=context)
 
-def list_autos(request):
-    products = Autos.objects.all()
-    context = {
-        "products": products
-    } 
-    return render(request, "products_list.html", context=context)
 
+@login_required
+def list_autos(request):
+    if request.user.is_authenticated:
+            products = Autos.objects.all()
+            context = {
+                "products": products
+            } 
+            return render(request, "products_list.html", context=context)
+    return redirect("login")
+@login_required
 def servicio (self):
     return render(self, "servicio.html")
 

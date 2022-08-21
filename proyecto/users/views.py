@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 
-from django.contrib.auth.forms import AuthenticationForm
+
+from django.contrib.auth.forms import AuthenticationForm 
 from users.forms import User_registration_form
 
 
@@ -33,8 +34,6 @@ def login_request(request):
 def register(request):
     if request.method == 'POST':
         form = User_registration_form(request.POST)
-        print("debug")                              #me tiraba error y lo puse para ver el error por consola
-        print(form.errors)
         if form.is_valid():
             form.save()
             return redirect('login')
