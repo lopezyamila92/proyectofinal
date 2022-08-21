@@ -12,27 +12,25 @@ from django.contrib.auth.decorators import login_required
 def inicio (self):
     return render(self, "inicio.html")
 
-
+@login_required
 def create_autos(request):
+    if request.user.is_superuser:
+        if request.method == "POST" :
+            form = Formularios_productos(request.POST)
+            if form.is_valid():
+                Autos.objects.create(
+                    name = form.cleaned_data["type"]+" "+form.cleaned_data["name"],
+                    price = form.cleaned_data ["price"],
+                    description = form.cleaned_data["description"],
+                    stock = form.cleaned_data["stock"]
+                )
+                return redirect(list_autos)
 
-    if request.method == "POST" :
-        form = Formularios_productos(request.POST)
-
-        if form.is_valid():
-            Autos.objects.create(
-                name = form.cleaned_data["type"]+" "+form.cleaned_data["name"],
-                price = form.cleaned_data ["price"],
-                description = form.cleaned_data["description"],
-                stock = form.cleaned_data["stock"]
-            )
-            return redirect(list_autos)
-
-
-
-    elif request.method == "GET":
-        form = Formularios_productos()
-        context = {"form": form }    
-        return render(request, "new_product.html", context=context)
+        elif request.method == "GET":
+            form = Formularios_productos()
+            context = {"form": form }    
+            return render(request, "new_product.html", context=context)
+    return redirect ('login')
 
 
 @login_required
@@ -44,6 +42,7 @@ def list_autos(request):
             } 
             return render(request, "products_list.html", context=context)
     return redirect("login")
+
 @login_required
 def servicio (self):
     return render(self, "servicio.html")
@@ -73,17 +72,22 @@ def search_products(request):
     context = {"products" :products}
     return render(request,"search_products.html", context=context)
 
+@login_required
 def delete_product(request, pk):
-    if request.method == "GET":
-        product = Autos.objects.get(id=pk)
-        context = {"product":product}
-        return render(request, "delete_product.html", context=context)
-    elif request.method == "POST":
-        product = Autos.objects.get(id=pk)
-        product.delete()
-        return redirect(list_autos)
+    if request.user.is_superuser:
+        if request.method == "GET":
+            product = Autos.objects.get(id=pk)
+            context = {"product":product}
+            return render(request, "delete_product.html", context=context)
+        elif request.method == "POST":
+            product = Autos.objects.get(id=pk)
+            product.delete()
+    return redirect('login')
 
+
+@login_required
 def update_product(request, pk):
+    
     if request.method == "POST":
         form = Formularios_productos(request.POST)
         if form.is_valid():
