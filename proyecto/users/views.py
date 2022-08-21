@@ -1,9 +1,13 @@
+import profile
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 
 
-from django.contrib.auth.forms import AuthenticationForm 
+from django.contrib.auth.forms import AuthenticationForm
+from matplotlib.style import context
+from slugify import slugify 
 from users.forms import User_registration_form
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -46,3 +50,13 @@ def register(request):
     elif request.method == 'GET':
         form = User_registration_form()
         return render(request, 'users/register.html', {'form': form})   #pasamos el fomulario por el context
+
+
+def show_profile(request):  
+    if request.user.is_authenticated:
+        context = {
+        "profile":request.user.profile
+    }
+        #print(request.user.profile)
+        return render (request, 'users/details.html', context=context)
+        return HttpResponse(request.user.profile.email)
