@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'autos',
     'servicio',
     'users',
+    'about',
 
 ]
 

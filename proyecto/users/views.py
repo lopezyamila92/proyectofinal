@@ -56,4 +56,4 @@ def show_profile(request):
     }
         #print(request.user.profile)
         return render (request, 'users/details.html', context=context)
-        return HttpResponse(request.user.profile.email)
+        
