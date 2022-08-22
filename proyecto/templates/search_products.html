@@ -2,20 +2,23 @@
 
 {% block bloqueQueCambia %}
 
-{% for product in products %}
-<div class="card text-center">
-    <div class="card-header">
-      SEDAN
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{product.name}}</h5>
-      <p class="card-text">{{product.description}}</p>
-      <a href="#" class="btn btn-primary">Conoce Más!</a>
-    </div>
-    <div class="card-footer text-muted">
-      Consulte Disponibilidad
-    </div>
-  </div>
-{% endfor %}
-
+{% if products.exists %}
+  {% for product in products %}
+    <div class="card text-center">
+      <div class="card-header">
+        SEDAN
+      </div>
+        <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <a href="#" class="btn btn-primary">Conoce Más!</a>
+        </div>
+      <div class="card-footer text-muted">
+        Consulte Disponibilidad
+      </div>
+    </div>    
+  {% endfor %}
+{% else %}
+    <h4>Producto no encontrado. Por favor, comunicate con nosotros personalmente o a nuestros teléfonos</h4>
+{% endif %}
 {% endblock bloqueQueCambia %}
