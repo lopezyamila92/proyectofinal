@@ -1,45 +1,52 @@
-from enum import auto
-from itertools import product
-from multiprocessing import context
-from tkinter.tix import AUTO
+#from enum import auto
+#from itertools import product
+#from multiprocessing import context
+#from tkinter.tix import AUTO
 from django.shortcuts import redirect, render 
 from autos.forms import Formularios_productos
 from autos.models import Autos
 from django.views.generic import ListView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 def inicio (self):
     return render(self, "inicio.html")
 
-
+@login_required
 def create_autos(request):
+    if request.user.is_superuser:
+        if request.method == "POST" :
+            form = Formularios_productos(request.POST, request.FILES)
+            if form.is_valid():
+                Autos.objects.create(
+                    name = form.cleaned_data["type"]+" "+form.cleaned_data["name"],
+                    price = form.cleaned_data ["price"],
+                    description = form.cleaned_data["description"],
+                    stock = form.cleaned_data["stock"],
+                    image = form.cleaned_data['image']
+                )
+                return redirect(list_autos)
 
-    if request.method == "POST" :
-        form = Formularios_productos(request.POST)
-
-        if form.is_valid():
-            Autos.objects.create(
-                name = form.cleaned_data["type"]+" "+form.cleaned_data["name"],
-                price = form.cleaned_data ["price"],
-                description = form.cleaned_data["description"],
-                stock = form.cleaned_data["stock"]
-            )
-            return redirect(list_autos)
+        elif request.method == "GET":
+            form = Formularios_productos()
+            context = {"form": form }    
+            return render(request, "new_product.html", context=context)
+    return redirect ('login')
 
 
-
-    elif request.method == "GET":
-        form = Formularios_productos()
-        context = {"form": form }    
-        return render(request, "new_product.html", context=context)
-
+@login_required
 def list_autos(request):
-    products = Autos.objects.all()
-    context = {
-        "products": products
-    } 
-    return render(request, "products_list.html", context=context)
+    if request.user.is_authenticated:
+            products = Autos.objects.all()
+            context = {
+                "products": products
+            } 
 
+            print(products)
+            return render(request, "products_list.html", context=context)
+    return redirect("login")
+
+@login_required
 def servicio (self):
     return render(self, "servicio.html")
 
@@ -68,44 +75,47 @@ def search_products(request):
     context = {"products" :products}
     return render(request,"search_products.html", context=context)
 
+@login_required
 def delete_product(request, pk):
-    if request.method == "GET":
-        product = Autos.objects.get(id=pk)
-        context = {"product":product}
-        return render(request, "delete_product.html", context=context)
-    elif request.method == "POST":
-        product = Autos.objects.get(id=pk)
-        product.delete()
-        return redirect(list_autos)
+    if request.user.is_superuser:
+        if request.method == "GET":
+            product = Autos.objects.get(id=pk)
+            context = {"product":product}
+            return render(request, "delete_product.html", context=context)
+        elif request.method == "POST":
+            product = Autos.objects.get(id=pk)
+            product.delete()
+    return redirect('login')
 
+
+@login_required
 def update_product(request, pk):
-    if request.method == "POST":
-        form = Formularios_productos(request.POST)
-        if form.is_valid():
-                product = Autos.objects.get(id=pk)
-                product.name = form.cleaned_data["name"]
-                product.price = form.cleaned_data ["price"]
-                product.description = form.cleaned_data["description"]
-                product.stock = form.cleaned_data["stock"]
-                product.save()
-                return redirect(list_autos)
-    elif request.method == "GET":
-        product = Autos.objects.get(id=pk)
-        form = Formularios_productos(initial = {
+    print (request.user.is_superuser)
+    if request.user.is_superuser:   
+        if request.method == "POST":
+            form = Formularios_productos(request.POST, request.FILES)
+            if form.is_valid():
+                    product = Autos.objects.get(id=pk)
+                    product.name = form.cleaned_data["name"]
+                    product.price = form.cleaned_data ["price"]
+                    product.description = form.cleaned_data["description"]
+                    product.stock = form.cleaned_data["stock"]
+                    product.image = form.cleaned_data["image"]
+                    product.save()
+                    return redirect(list_autos)
+        elif request.method == "GET":
+            product = Autos.objects.get(id=pk)
+            form = Formularios_productos(initial = {
                                     "name" :product.name,
                                     "price" :product.price,
                                     "description" :product.description, 
                                     "stock" :product.stock,
+                                    "image" : product.image
                                     })
-        context = {"form":form}    
-        return render(request, "update_product.html", context=context)
+            context = {"form":form}    
+            return render(request, "update_product.html", context=context)
+    return redirect('login')
 
-class List_articles(ListView):
+class List_articles(LoginRequiredMixin, ListView):
     model = Autos
     template_name = "list_articles.html"
-
-
-
-
-
-
