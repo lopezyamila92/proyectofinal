@@ -2,19 +2,23 @@
 
 {% block bloqueQueCambia %}
     <h1> Lo que tu FORD necesita, nosotros lo tenemos!</h1>
-
-{% for service in service %}    
-    <br/>
-    <div class="card" style="width: 18rem;">
+  <div class="container">   
+    <div class="card-group mt-3">
+      {% for service in service %}
+      <div class="card text-center border-info">
         <img src="https://media.ford.com/content/fordmedia/fna/us/en/news/2017/02/01/dwayne-johnson-returns-as-ford-ambassador-of-service/jcr:content/image.img.881.495.jpg/1500103956142.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{service.name}}</h5>
-          <p class="card-text">Precio: {{service.price}}</p>
-          <p class="card-text">Descripción:{{service.description}} </p>
+          <h4 class="card-title">{{service.name}}</h4>
+          <p class="card-text">Precio: ${{service.price}}</p>
+          <p class="card-text">Descripción:{{service.description}}</p>
         </div>
-      </div>
-{% endfor %}
+      </div>       
+      {% endfor %}           
+    </div>
+  </div>  
 <p></p>
-<h4>Los precios son estimativos, dependera del estado de cada vehículo</h4>
+<h5>- Los precios son estimativos, dependera del estado de cada vehículo -</h5>
 <p></p>
+<h5>- Por favor comunicate con nostros para turnos y presupuesto -</h5>
 {% endblock bloqueQueCambia %}
+
