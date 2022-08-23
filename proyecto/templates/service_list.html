@@ -4,24 +4,17 @@
     <h1> Lo que tu FORD necesita, nosotros lo tenemos!</h1>
 
 {% for service in service %}    
-
-
     <br/>
     <div class="card" style="width: 18rem;">
-        <img src="https://www.diariolachayota.com/wp-content/uploads/2020/10/repuestos-ford-motor-company-originales-D_NQ_NP_891933-MLV28074904801_092018-F-1024x475.jpg" class="card-img-top" alt="...">
+        <img src="https://media.ford.com/content/fordmedia/fna/us/en/news/2017/02/01/dwayne-johnson-returns-as-ford-ambassador-of-service/jcr:content/image.img.881.495.jpg/1500103956142.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{service.name}}</h5>
           <p class="card-text">Precio: {{service.price}}</p>
-          <p class="card-text">Stock:{{service.stock}} </p>
+          <p class="card-text">Descripción:{{service.description}} </p>
         </div>
       </div>
-
 {% endfor %}
-
-
-
-
-
-
+<p></p>
+<h4>Los precios son estimativos, dependera del estado de cada vehículo</h4>
+<p></p>
 {% endblock bloqueQueCambia %}
-

@@ -2,7 +2,7 @@ from django.urls import path
 from .views import List_articles
 from proyecto.views import categorias
 from proyecto.views import inicio
-from autos.views import create_autos , list_autos , servicio , inicio , primer_formulario, search_products, delete_product , update_product, List_articles
+from autos.views import create_autos , list_autos , servicio , inicio , primer_formulario, search_products, delete_product , update_product, List_articles, compras
 from servicio.views import create_service , list_service
  
 
@@ -20,6 +20,7 @@ urlpatterns = [
     path("update-product/<int:pk>/", update_product, name="update_product"),
     path("list-articles/", List_articles.as_view(), name="List_articles"),
     path('servicio/', list_service, name="list_service"),
+    path('compras/', compras, name= 'compras'),
 
 ]
 

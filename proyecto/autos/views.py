@@ -48,7 +48,7 @@ def list_autos(request):
 
 @login_required
 def servicio (self):
-    return render(self, "servicio.html")
+    return render(self, "service_list.html")
 
 
 
@@ -119,3 +119,6 @@ def update_product(request, pk):
 class List_articles(LoginRequiredMixin, ListView):
     model = Autos
     template_name = "list_articles.html"
+
+def compras (self):
+    return render(self, "compras.html")
