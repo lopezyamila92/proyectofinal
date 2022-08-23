@@ -9,3 +9,6 @@ class User_profile(models.Model):
     description = models.CharField(max_length=350, blank=False, verbose_name='Descripción')
     image = models.ImageField(upload_to='profile_image/', blank=True, verbose_name='Imagen')
     website = models.CharField(max_length=300, blank=True,null=True)
+
+    def __str__(self):
+        return self.user.username + ' - profile'

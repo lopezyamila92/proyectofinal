@@ -1,0 +1,23 @@
+{% extends "padre.html" %}
+
+{% block bloqueQueCambia %}
+
+
+{% if products.exists %}
+  {% for product in products %}
+    {% if product.image %}
+    <img src="{{product.image.url}}" class="card-img-top" style="width: 18rem;">
+    {% else %}
+    <img src="https://www.diariolachayota.com/wp-content/uploads/2020/10/repuestos-ford-motor-company-originales-D_NQ_NP_891933-MLV28074904801_092018-F-1024x475.jpg" class="card-img-top" alt="...">
+    {% endif %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h1 class="display-4">{{product.name}}</h1>
+            <p class="lead">Descripción: {{product.description}}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endblock bloqueQueCambia %}
+
+

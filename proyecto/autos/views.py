@@ -122,3 +122,9 @@ class List_articles(LoginRequiredMixin, ListView):
 
 def compras (self):
     return render(self, "compras.html")
+
+def conoce_mas (request):
+    search = request.GET["id"]
+    products = Autos.objects.filter(id__iexact=search)
+    context = {"products" :products}
+    return render(request,"conoce_mas.html", context=context)
