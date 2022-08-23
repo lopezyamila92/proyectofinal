@@ -4,7 +4,7 @@ from about.views import about
 
 urlpatterns = [
     path('contact-us/', contact_us_view, name = 'contact-us'),
-    path ('about/', about, name = 'about')
+    path ('us/', about, name = 'about')
     
 
 ]
