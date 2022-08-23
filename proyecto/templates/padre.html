@@ -20,15 +20,15 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="btn btn-primary" href="/ford/">inicio FORD</a>
+                <a class="btn btn-primary" href="/ford/">FORD</a>
                 <a class="navbar-brand" href="/ford/list_autos/">Autos</a>
                 <a class="navbar-brand" href="/ford/categorias/">Categorias</a>
                 <a class="navbar-brand" href="/ford/servicio">Servicio</a>
         {% if request.user.is_authenticated %}
-                <a class="navbar-brand" href="/users/logout">Logout</a> 
+                <a class="navbar-brand" href="/users/logout">Cerrar Sesión</a> 
         {% else %}
-                <a class="navbar-brand" href="/users/login">Login</a>    
-                <a class="navbar-brand" href="/users/register">Register</a>
+                <a class="navbar-brand" href="/users/login">Iniciar Sesión</a>    
+                <a class="navbar-brand" href="/users/register">Registrarse</a>
         {% endif %} 
                 <form class="form-inline my-2 my-lg-0" action="/ford/search-products/" method="GET">
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="search">
@@ -68,12 +68,12 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="/about/us">About</a></li>
+                            <li class="list-inline-item"><a href="/about/us">Sobre Nosotros</a></li>
                             <li class="list-inline-item">⋅</li>
                             <li class="list-inline-item"><a href="/about/contact-us">Contactate</a></li>
                             <li class="list-inline-item">⋅</li>
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; All Rights Reserved.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Todos los derechos reservados.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
