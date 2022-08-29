@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
 
 def inicio (self):
     return render(self, "inicio.html")
@@ -12,7 +12,6 @@ def categorias (request):
 def servicio (self):
     return render(self, "servicio.html")
 
-def index(request):
-    return render(request, 'inicio.html')
+
 
 
