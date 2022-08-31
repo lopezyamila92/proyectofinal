@@ -17,7 +17,7 @@ def contact_us_view(request):
         print (form.is_valid())
         if form.is_valid():
             form.save()
-            return redirect('/subject')
+            return redirect('inicio')
         else:
             errors = form.errors.items()
             form = contactUsForm()
