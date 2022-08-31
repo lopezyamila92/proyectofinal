@@ -2,7 +2,6 @@
 
 {% block bloqueQueCambia %}
 
-
 {% if products.exists %}
   {% for product in products %}
     {% if product.image %}
@@ -18,6 +17,7 @@
         </div>
     {% endfor %}
 {% endif %}
+
 {% endblock bloqueQueCambia %}
 
 
