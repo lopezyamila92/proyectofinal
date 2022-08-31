@@ -6,8 +6,12 @@
     
 {% endblock %}
 
-{% block bloqueQueCambia %}
 
+
+{% block bloqueQueCambia %}
+<p></p>
+Estos cambios serán permanentes. ¿Estás seguro que quieres borrar tu cuenta? Si es así, hace click en borrar y esperamos que vuelvas pronto!
+<p></p>
 <form action="" method="POST">
     {% csrf_token %}
 
