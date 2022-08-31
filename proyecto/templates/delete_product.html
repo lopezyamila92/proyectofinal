@@ -7,8 +7,8 @@
 {% block bloqueQueCambia %}
 
 <p>Nombre del producto: {{product.name}}</p>
-<p>Stock del producto: {{product.Stock}}</p>
-<p>Precio del producto: {{product.precio}}</p>
+<p>Stock del producto: {{product.stock}}</p>
+<p>Precio del producto: ${{product.price}}</p>
 
 <form action="" method="POST">
     {% csrf_token %}

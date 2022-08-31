@@ -4,6 +4,8 @@
 
 {% block bloqueQueCambia %}
 
+Estos son los datos de tu perfil, completa o modifica lo que creas necesario y después hace click en "Enviar"
+<p></p>
 <form action="" method="POST" enctype="multipart/form-data">
     <center>
     
@@ -12,11 +14,13 @@
     <table>
     
         <div class="card" style="width: 25rem;">
+            <center>
             {% if user.image %}
             <img src="{{user.image.url}}" class="card-img-top" style="width: 18rem;" alt="Card image cap">
             {% else %}
                  <img class="card-img-top" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" style="width: 18rem;"alt="Card image cap">
             {% endif %} 
+            </center>
             {{form.as_table}}
             <div class="card-body">
             <p></p>             

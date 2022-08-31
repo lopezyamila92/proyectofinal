@@ -81,7 +81,7 @@ def delete_product(request, pk):
         elif request.method == "POST":
             product = Autos.objects.get(id=pk)
             product.delete()
-    return redirect('login')
+    return redirect('inicio')
 
 
 @login_required
