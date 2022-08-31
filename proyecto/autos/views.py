@@ -1,7 +1,3 @@
-#from enum import auto
-#from itertools import product
-#from multiprocessing import context
-#from tkinter.tix import AUTO
 from django.shortcuts import redirect, render 
 from autos.forms import Formularios_productos
 from autos.models import Autos
@@ -52,16 +48,16 @@ def servicio (self):
 
 
 
-def ford_autos(request):
-    new_autos = Autos.objects.create(
-        title = 'coche nuevo', 
-        description = 'unidad de preentrega', 
-        author = 'ford oficial'
-        )
-    context = {
-        'new_autos':new_autos
-    }
-    return render(request, 'preentrega.html', context=context)
+# def ford_autos(request):
+#     new_autos = Autos.objects.create(
+#         title = 'coche nuevo', 
+#         description = 'unidad de preentrega', 
+#         author = 'ford oficial'
+#         )
+#     context = {
+#         'new_autos':new_autos
+#     }
+#     return render(request, 'preentrega.html', context=context)
 
 def primer_formulario(request):
     print(request.method)
@@ -100,7 +96,9 @@ def update_product(request, pk):
                     product.price = form.cleaned_data ["price"]
                     product.description = form.cleaned_data["description"]
                     product.stock = form.cleaned_data["stock"]
-                    product.image = form.cleaned_data["image"]
+                    
+                    if form.cleaned_data['image'] !=None:
+                        product.image = form.cleaned_data["image"]
                     product.save()
                     return redirect(list_autos)
         elif request.method == "GET":
