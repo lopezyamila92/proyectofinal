@@ -1,9 +1,11 @@
 from django.shortcuts import redirect, render 
+from django.contrib.auth.decorators import login_required
+
 from autos.forms import Formularios_productos
 from autos.models import Autos
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
+
 
 def inicio (self):
     return render(self, "inicio.html")
@@ -45,19 +47,6 @@ def list_autos(request):
 @login_required
 def servicio (self):
     return render(self, "service_list.html")
-
-
-
-# def ford_autos(request):
-#     new_autos = Autos.objects.create(
-#         title = 'coche nuevo', 
-#         description = 'unidad de preentrega', 
-#         author = 'ford oficial'
-#         )
-#     context = {
-#         'new_autos':new_autos
-#     }
-#     return render(request, 'preentrega.html', context=context)
 
 def primer_formulario(request):
     print(request.method)

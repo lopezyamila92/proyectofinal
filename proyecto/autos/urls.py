@@ -2,7 +2,7 @@ from django.urls import path
 from .views import List_articles
 from proyecto.views import categorias
 from proyecto.views import inicio
-from autos.views import create_autos , list_autos , servicio , inicio , primer_formulario, search_products, delete_product , update_product, List_articles, compras, conoce_mas
+from autos.views import create_autos , list_autos , inicio , primer_formulario, search_products, delete_product , update_product, List_articles, compras, conoce_mas
 from servicio.views import create_service , list_service
  
 

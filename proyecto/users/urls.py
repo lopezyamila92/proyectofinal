@@ -9,8 +9,5 @@ urlpatterns = [
     path ('profile/', my_profile, name='my_profile'),
     path('delete_account/', delete_account, name='delete_account'),
     path('password/', password_user, name= 'password_user')
-   
-    
-    
     
 ]

@@ -8,9 +8,9 @@ CHOICES= [
     ]
 
 class Formularios_productos(forms.Form):
-    type= forms.CharField(label='Tipo de vehiculo', widget=forms.Select(choices=CHOICES))
-    name = forms.CharField(max_length=40)
-    price = forms.FloatField()
-    description = forms.CharField(max_length=200)
-    stock = forms.IntegerField()
-    image = forms.ImageField(required=False)
+    type= forms.CharField(label='Tipo de Vehículo', widget=forms.Select(choices=CHOICES))
+    name = forms.CharField(max_length=40, label='Nombre')
+    price = forms.FloatField(label='Precio')
+    description = forms.CharField(max_length=200, label='Descripción')
+    stock = forms.IntegerField(label='Stock')
+    image = forms.ImageField(required=False, label='Imagen/Foto')

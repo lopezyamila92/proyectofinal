@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
-from users.forms import Edit_profile_form, Password_change_form
 from django.contrib.auth import update_session_auth_hash
-from django.contrib import messages
 
+from users.forms import Edit_profile_form, Password_change_form
+from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from users.models import User_profile
 from users.forms import User_registration_form
@@ -21,15 +20,14 @@ def login_request(request):
 
             user = authenticate(username=username, password=password)
 
-            if user is not None: 
-                print('login request estoy aca 002')       
+            if user is not None:   
                 login(request, user)    
                 
-                context = {'message':f'Bienvenido {username}!! :D'}         
+                context = {'message':f'Bienvenido {username}!'}         
                 return render(request, 'inicio.html', context = context)    
 
         form = AuthenticationForm()     
-        return render(request, 'users/login.html', {'error': 'Formulário inválido', 'form': form})
+        return render(request, 'users/login.html', {'error': 'Usuario y/o Contraseña Incorrecta', 'form': form})
 
     elif request.method == 'GET':        
         form = AuthenticationForm()
@@ -55,21 +53,16 @@ def register(request):
 
 @login_required
 def my_profile(request):    
-    if request.user.is_authenticated: 
-        print('estoy aca1')                                                    
+    if request.user.is_authenticated:                                                   
         try:            
             user = User_profile.objects.get(user=request.user)
         except:            
             user = User_profile.objects.create(user=request.user)
         user.save()     
-    if request.method == "POST":  
-            print('estoy aca2')                 
+    if request.method == "POST":                 
             form = Edit_profile_form(request.POST, request.FILES) 
               
-            if form.is_valid():  
-                print('estoy aca3')   
-                print("Image:")
-                print(form.cleaned_data['image'])                                                              
+            if form.is_valid():                                                             
                 user.name = form.cleaned_data['name']                           
                 user.last_name = form.cleaned_data ['last_name']
                 user.description = form.cleaned_data['description']
@@ -81,8 +74,7 @@ def my_profile(request):
                 context = {'form':form,'user':user}             
                 return render(request, 'users/my_profile.html', context=context)
             
-    elif request.method == "GET":
-            print('estoy aca4')                   
+    elif request.method == "GET":                 
             form = Edit_profile_form(initial = {
                                     'name':user.name,
                                     'last_name':user.last_name,
@@ -92,7 +84,7 @@ def my_profile(request):
                                     })
             context = {'form':form,'user':user}    
             return render(request, 'users/my_profile.html', context=context)
-print('estoy aca5')       
+      
     
 @login_required
 def password_user(request):
@@ -101,11 +93,11 @@ def password_user(request):
             form = Password_change_form(request.user, request.POST)
             if form.is_valid():
                 user = form.save()
-                update_session_auth_hash(request, user)  # Important!
-                messages.success(request, 'Your password was successfully updated!')
+                update_session_auth_hash(request, user)  
+                messages.success(request, 'Su contraseñá ha si cambiada')
                 return redirect('inicio')
             else:
-                messages.error(request, 'Please correct the error below.')
+                messages.error(request, 'Por favor, corregir el error')
         else:
             form = Password_change_form(request.user)
         return render(request, 'users/change_password.html', {'form': form})
@@ -113,20 +105,15 @@ def password_user(request):
 
 
 @login_required
-def delete_account(request):                       #pk es lo mismo que id
+def delete_account(request):                       
     if request.user.is_authenticated:
-        print('delete user estoy aca 001')
-        if request.method == 'GET':
-            print('delete user estoy aca 002')
-            userProfile = User_profile.objects.get(user=request.user)  #trae el objeto que cumplea la condición .get(id=1). el get solamente trae una sola cosa
+        if request.method == 'GET':            
+            userProfile = User_profile.objects.get(user=request.user)  
             context = {'userProfile':userProfile}
-            return render(request, 'users/delete_account.html', context=context)     #html de confirmacion de borrado
+            return render(request, 'users/delete_account.html', context=context)     
         elif request.method == 'POST':
-            print('delete user estoy aca 003')
             userProfile = User_profile.objects.get(user=request.user)
             userProfile.delete()
-            request.user.delete()
-            print('delete user estoy aca 004')
-    print('delete user estoy aca 005')
+            request.user.delete()           
     return redirect('login')
     
