@@ -116,7 +116,7 @@ def update_product(request, pk):
 
 class List_articles(LoginRequiredMixin, ListView):
     model = Autos
-    template_name = "list_articles.html"
+    template_name = "products_list.html"
 
 def compras (self):
     return render(self, "compras.html")
