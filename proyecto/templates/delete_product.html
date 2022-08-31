@@ -1,9 +1,7 @@
 {% extends "padre.html" %}
 
 {% block titulo %}
-
-    borrar producto
-    
+    Borrar Producto    
 {% endblock %}
 
 {% block bloqueQueCambia %}
@@ -15,10 +13,7 @@
 <form action="" method="POST">
     {% csrf_token %}
 
-        <p><input type="submit" value="borar"></p>
-
+        <p><input type="submit" value="Borrar"></p>
 </form>
-
-
 
 {% endblock bloqueQueCambia %}
