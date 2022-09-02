@@ -2,19 +2,18 @@
 
 {% block bloqueQueCambia %}
 
- <!-- ======= Breadcrumbs ======= -->
+
  <section id="breadcrumbs" class="breadcrumbs">
   <div class="container">
 
     <div class="d-flex justify-content-between align-items-center">
-      <h2>Area de taller</h2>
+      <h2>Area de Taller</h2>
     </div>
 
   </div>
-</section><!-- End Breadcrumbs -->
+</section>
 
 
-<!-- ======= Pricing Section ======= -->
 <section id="pricing" class="pricing">
   <div class="container">
 
@@ -22,14 +21,14 @@
       {% for service in service %}
       <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
         <div class="box {% if forloop.counter == 3 %}featured{% endif %}">
-          {% if forloop.first %}<span class="advanced">Promocion</span>{% endif %}
+          {% if forloop.first %}<span class="advanced">Promoción</span>{% endif %}
           <h3>{{service.name}}</h3>
           <h4><sup>$</sup>{{service.price}}<span></span></h4>
           <ul>
             <li>{{service.description}}</li>
           </ul>
           <div class="btn-wrap">
-            <a href="#" class="btn-buy">Solicitar turno</a>
+            <a href="#" class="btn-buy">Solicitar Turno</a>
           </div>
         </div>
       </div>
@@ -39,5 +38,5 @@
     </div>
 
   </div>
-</section><!-- End Pricing Section -->
+</section>
 {% endblock bloqueQueCambia %}

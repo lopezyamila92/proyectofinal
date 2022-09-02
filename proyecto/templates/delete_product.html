@@ -1,22 +1,22 @@
 {% extends "padre.html" %}
 
 {% block bloqueQueCambia %}
-<!-- ======= Breadcrumbs ======= -->
+
 <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
 
       <div class="d-flex justify-content-between align-items-center">
-        <h2>Borrar producto</h2>
+        <h2>Borrar Producto</h2>
       </div>
 
     </div>
 </section>
-<!-- End Breadcrumbs -->
+
 
 <section id="contact" class="contact">
     <div class="container">
         <div class="col-lg-8 mt-5 mt-lg-0">
-            <p>Si esta seguro de esta acción, hace click en Borrar</p>
+            <p>Si estás seguro de esta acción, hace click en Borrar</p>
         <form action="" method="POST">
             {% csrf_token %}
         {% if request.user.is_superuser %}

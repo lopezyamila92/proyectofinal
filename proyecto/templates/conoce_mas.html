@@ -4,7 +4,7 @@
 
 {% if products.exists %}
 {% for product in products %}
-    <!-- ======= Breadcrumbs ======= -->
+    
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
   
@@ -13,10 +13,10 @@
           </div>
   
         </div>
-      </section><!-- End Breadcrumbs -->
+      </section>
 
 
-<!-- ======= Portfolio Details Section ======= -->
+
 <section id="portfolio-details" class="portfolio-details">
     <div class="container">
 
@@ -45,7 +45,7 @@
             </ul>
           </div>
           <div class="portfolio-description">
-            <h2>Descripcion</h2>
+            <h2>Descripción</h2>
             <p>
                 {{product.description}}
             </p>
@@ -55,10 +55,8 @@
       </div>
 
     </div>
-  </section><!-- End Portfolio Details Section -->
+  </section>
   {% endfor %}
   {% endif %}
 
 {% endblock bloqueQueCambia %}
-
-
