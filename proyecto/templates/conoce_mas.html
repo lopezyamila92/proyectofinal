@@ -3,20 +3,61 @@
 {% block bloqueQueCambia %}
 
 {% if products.exists %}
-  {% for product in products %}
-    {% if product.image %}
-    <img src="{{product.image.url}}" class="card-img-top" style="width: 18rem;">
-    {% else %}
-    <img src="https://www.diariolachayota.com/wp-content/uploads/2020/10/repuestos-ford-motor-company-originales-D_NQ_NP_891933-MLV28074904801_092018-F-1024x475.jpg" class="card-img-top" alt="...">
-    {% endif %}
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-            <h1 class="display-4">{{product.name}}</h1>
-            <p class="lead">Descripción: {{product.description}}</p>
-            </div>
+{% for product in products %}
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+  
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>{{product.name}}</h2>
+          </div>
+  
         </div>
-    {% endfor %}
-{% endif %}
+      </section><!-- End Breadcrumbs -->
+
+
+<!-- ======= Portfolio Details Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-8">
+          <div class="portfolio-details-slider swiper">
+            <div class="swiper-wrapper align-items-center">
+
+              <div class="swiper-slide">
+                <img src="{% if product.image %} {{product.image.url}} {% else %} https://www.diariolachayota.com/wp-content/uploads/2020/10/repuestos-ford-motor-company-originales-D_NQ_NP_891933-MLV28074904801_092018-F-1024x475.jpg   {% endif %}" alt="">
+              </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="portfolio-info">
+            <h3>Detalles</h3>
+            <ul>
+              <li><strong>Nombre</strong>: {{product.name}}</li>
+              <li><strong>Precio</strong>: {{product.price}}</li>
+              <li><strong>Disponibilidad</strong>: {{product.stock}}</li>
+            </ul>
+          </div>
+          <div class="portfolio-description">
+            <h2>Descripcion</h2>
+            <p>
+                {{product.description}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Details Section -->
+  {% endfor %}
+  {% endif %}
 
 {% endblock bloqueQueCambia %}
 

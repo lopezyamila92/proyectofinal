@@ -1,23 +1,43 @@
 {% extends "padre.html" %}
 
 {% block bloqueQueCambia %}
-    <h1> Lo que tu FORD necesita, nosotros lo tenemos!</h1>
-  <div class="container">   
-    <div class="card-group mt-3">
-      {% for service in service %}
-      <div class="card text-center border-info">
-        <img src="https://media.ford.com/content/fordmedia/fna/us/en/news/2017/02/01/dwayne-johnson-returns-as-ford-ambassador-of-service/jcr:content/image.img.881.495.jpg/1500103956142.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h4 class="card-title">{{service.name}}</h4>
-          <p class="card-text">Precio: ${{service.price}}</p>
-          <p class="card-text">Descripción:{{service.description}}</p>
-        </div>
-      </div>       
-      {% endfor %}           
+
+ <!-- ======= Breadcrumbs ======= -->
+ <section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Area de taller</h2>
     </div>
-  </div>  
-<p></p>
-<h5>- Los precios son estimativos, dependera del estado de cada vehículo -</h5>
-<p></p>
-<h5>- Por favor comunicate con nostros para turnos y presupuesto -</h5>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+
+<!-- ======= Pricing Section ======= -->
+<section id="pricing" class="pricing">
+  <div class="container">
+
+    <div class="row">
+      {% for service in service %}
+      <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+        <div class="box {% if forloop.counter == 3 %}featured{% endif %}">
+          {% if forloop.first %}<span class="advanced">Promocion</span>{% endif %}
+          <h3>{{service.name}}</h3>
+          <h4><sup>$</sup>{{service.price}}<span></span></h4>
+          <ul>
+            <li>{{service.description}}</li>
+          </ul>
+          <div class="btn-wrap">
+            <a href="#" class="btn-buy">Solicitar turno</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %} 
+
+
+    </div>
+
+  </div>
+</section><!-- End Pricing Section -->
 {% endblock bloqueQueCambia %}
