@@ -20,11 +20,10 @@ Tareas desarrolladas por Ayelen:
 
 VIDEO SOLICITADO
 El siguiente video a muy resumidas cuentas una pequeña explicación de lo que contiene la página web.
-link
+https://youtu.be/nmhE_2ud3NI
 
 
 Tabla de Contenidos:
-Para acceder:
 1. A través del boton Registrarse o Iniciar Sesión
 1.1. Registrase:
 Para registrarte como nuevo usuario, necesitas completar el formulario de Registro de Nuevo Usuario. Una vez que completes los datos, hace click en Registrarme
@@ -47,17 +46,3 @@ Una vez que te encuentres logueado entrando a tu usuario en Mi Perfil podras edi
 
 4. Administración:
 Ingresa a la administración de Django ingresando a http://127.0.0.1:8000/admin/ en el navegador.
-4.1. Para poder acceder a esta dirección, debes tener un superusuario.
-
-Formulario de Contacto:
-5. Si accedes a: http://127.0.0.1:8000/about/contact-us/ o desde el pie de págia en "Contactate" se va a desplegar un formulario, en el cual debes completar:
-    - Tu nombre.
-    - Dirección de correo para poder comunicarnos.
-    - Teléfono de contacto para poder comunicarnos.
-    - Tenes que seleccionar el tipo de consulta que necesitas realizar (menú desplegable).
-    - Escribirnos tu mensaje.
-    - Hacer click en el botón "Enviar"
-    - Una vez cumplidos esos pasos, la página de rediccionaria al inicio de la misma.
-
-Para buscar productos a través del NavBar:
-6. Formulario de busqueda esta disponible en "http://127.0.0.1:8000/ford/search-products/search"
