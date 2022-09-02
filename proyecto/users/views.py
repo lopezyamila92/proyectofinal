@@ -23,7 +23,7 @@ def login_request(request):
             if user is not None:   
                 login(request, user)    
                 
-                context = {'message':f'Bienvenido {username}!'}         
+                context = {'message':f'{username}!'}         
                 return render(request, 'inicio.html', context = context)    
 
         form = AuthenticationForm()     

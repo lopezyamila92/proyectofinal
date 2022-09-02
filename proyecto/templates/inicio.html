@@ -1,15 +1,14 @@
 {% extends "padre.html" %}
 
-{% block titulo %}
-    Inicio
-{% endblock %}
-
 {% block bloqueQueCambia %}
 
-    <h2> LLEGÁ MÁS LEGOS >> FORD </h2>
-    <p></p>
-{% if message %}
-    <h2>{{message}}</h2>
-{% endif %}
+<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://cdn.motor1.com/images/mgl/g449j9/s1/ford-f-150-raptor-r.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+
 
 {% endblock bloqueQueCambia %}

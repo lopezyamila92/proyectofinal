@@ -1,24 +1,31 @@
 {% extends "padre.html" %}
 
-{% block titulo %}
-
-    borrar producto
-    
-{% endblock %}
-
-
 
 {% block bloqueQueCambia %}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Borrar Cuenta</h2>
+      </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="col-lg-8 mt-5 mt-lg-0">
 <p></p>
 Estos cambios serán permanentes. ¿Estás seguro que quieres borrar tu cuenta? Si es así, hace click en borrar y esperamos que vuelvas pronto!
 <p></p>
-<form action="" method="POST">
-    {% csrf_token %}
-
-        <p><input type="submit" value="Borrar"></p>
-
-</form>
-
-
+        <form action="" method="POST">
+            {% csrf_token %}
+            <br/>
+            <div class="text-left php-email-form" role="form"><button type="submit">Borrar</button></div>          
+        </form>
 
 {% endblock bloqueQueCambia %}
+
+<!-- <p><input type="submit" value="Borrar"></p> -->

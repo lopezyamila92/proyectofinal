@@ -1,0 +1,33 @@
+{% extends "padre.html" %}
+
+
+{% block bloqueQueCambia %}
+
+
+<form action="/about/contact-us/"  method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Nombre</label>
+      <input type="text" class="form-control" name="subject" placeholder="Completa tu nombre">
+      <label for="exampleFormControlInput1">Dirección de email</label>
+      <input type="email" class="form-control" name="email" placeholder="Dirección de email">
+      <label for="exampleFormControlInput1">Teléfono de Contacto</label>
+      <input type="tel" class="form-control" name="exampleFormControlInput1" placeholder="Número de Teléfono">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Selecciona el tipo de consulta</label>
+      <select class="form-control" name="exampleFormControlSelect1">
+        <option>Ventas</option>
+        <option>Servicios</option>
+        <option>Otras Consultas</option>
+      </select>
+    </div>
+   
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Dejanos acá tu mensaje</label>
+      <textarea class="form-control" name="message" rows="3"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+
+  </form>
+{% endblock bloqueQueCambia %}

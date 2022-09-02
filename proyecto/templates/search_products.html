@@ -2,20 +2,35 @@
 
 {% block bloqueQueCambia %}
 
+
+ <!-- ======= Breadcrumbs ======= -->
+ <section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Resultados de busqueda:</h2>
+
+    </div>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+
 {% if products.exists %}
   {% for product in products %}
+  <br/> 
     <div class="card text-center">
       <div class="card-header">
         FORD
       </div>
         <div class="card-body">
         <h5 class="card-title">{{product.name}}</h5>
-        <a href="/ford/conoce_mas/?id={{product.id}}" class="btn btn-primary">Conoce Más!</a>
+        <a href="/ford/conoce_mas/?id={{product.id}}" class="btn btn-danger">Conoce Más!</a>
         </div>
       <div class="card-footer text-muted">
         Consulte Disponibilidad
       </div>
-    </div>    
+    </div>   
   {% endfor %}
 {% else %}
     <h4>Producto no encontrado. Por favor, comunicate con nosotros personalmente o a nuestros teléfonos</h4>

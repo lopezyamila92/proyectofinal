@@ -1,27 +1,48 @@
 {% extends 'padre.html' %}
 
-{% block titulo %}
-    Login
-{% endblock %}
-
 {% block bloqueQueCambia %}
 
-<form action="" method="POST">
-{% csrf_token %}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
 
-    <table>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Login</h2>
+      </div>
 
-        {{form.as_table}}
+    </div>
+</section><!-- End Breadcrumbs -->
+  
+  
+  
+  <section id="contact" class="contact">
+    <div class="container">
+        <div class="col-lg-8 mt-5 mt-lg-0">
 
-    </table>
+        <form action="" method="POST" >
+        {% csrf_token %}
 
-    <p><input type="submit" value="Iniciar sesion"></p>
-    
-    </form>
+            <table class="php-email-form" role="form">
 
-    {% if error %}
-        <p style="color:red;">{{error}}</p> 
-    {% endif %}
+                {{form.as_table}}
+
+            </table>
+            <br/>
+            <div class="text-left php-email-form" role="form"><button type="submit">Login</button></div>
+            <p></p>
+            
+        </form>
+
+            {% if error %}
+                <p style="color:red;">{{error}}</p> 
+            {% endif %}
+
+        </div>
+    </div>
+  </section><!-- End Contact Section -->
+
+
+
 
 
 {% endblock bloqueQueCambia %}

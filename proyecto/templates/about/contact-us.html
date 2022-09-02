@@ -1,36 +1,53 @@
 {% extends "padre.html" %}
 
-{% block titulo %}
-    Contactanos!    
-{% endblock %}
-
 
 {% block bloqueQueCambia %}
 
-<form action="/about/contact-us/"  method="POST">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Nombre</label>
-      <input type="text" class="form-control" name="subject" placeholder="Completa tu nombre">
-      <label for="exampleFormControlInput1">Dirección de email</label>
-      <input type="email" class="form-control" name="email" placeholder="Dirección de email">
-      <label for="exampleFormControlInput1">Teléfono de Contacto</label>
-      <input type="tel" class="form-control" name="exampleFormControlInput1" placeholder="Número de Teléfono">
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Selecciona el tipo de consulta</label>
-      <select class="form-control" name="exampleFormControlSelect1">
-        <option>Ventas</option>
-        <option>Servicios</option>
-        <option>Otras Consultas</option>
-      </select>
-    </div>
-   
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Dejanos acá tu mensaje</label>
-      <textarea class="form-control" name="message" rows="3"></textarea>
-    </div>
-    <button class="btn btn-primary" type="submit">Enviar</button>
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
 
-  </form>
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Contate con nosotros, para lo que necesites</h2>
+    </div>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<section id="contact" class="contact">
+  <div class="container">
+      <div class="col-lg-8 mt-5 mt-lg-0">
+
+      <form action="/about/contact-us/"  method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Nombre</label>
+          <input type="text" class="form-control" name="subject" placeholder="Completa tu nombre">
+          <label for="exampleFormControlInput1">Dirección de email</label>
+          <input type="email" class="form-control" name="email" placeholder="Dirección de email">
+          <label for="exampleFormControlInput1">Teléfono de Contacto</label>
+          <input type="tel" class="form-control" name="exampleFormControlInput1" placeholder="Número de Teléfono">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Selecciona el tipo de consulta</label>
+          <select class="form-control" name="exampleFormControlSelect1">
+            <option>Ventas</option>
+            <option>Servicios</option>
+            <option>Otras Consultas</option>
+          </select>
+        </div>
+   
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Dejanos acá tu mensaje</label>
+          <textarea class="form-control" name="message" rows="3"></textarea>
+        </div>
+        <br/>
+        <div class="text-left php-email-form" role="form"><button type="submit">Enviar</button></div>
+        
+
+      </form>
+
 {% endblock bloqueQueCambia %}
+
+<!-- <button class="btn btn-primary" type="submit">Enviar</button> -->
