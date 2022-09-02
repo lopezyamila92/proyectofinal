@@ -48,7 +48,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="/ford/" class="active">Inicio</a></li>
+          {% if request.user.is_superuser %}
+          <li><a href="/ford/create_autos/" class="active">Crear Producto</a></li>
+          {% endif %}
 
           
           <li><a href="/ford/list_autos/">Autos</a></li>
