@@ -43,6 +43,10 @@
                 <div class="portfolio-links">
                   <a href="/ford/compras" title="Comprar"><i class="bx bxs-cart-add"></i></a>
                   <a href="/ford/conoce_mas/?id={{product.id}}" title="Mas informacion"><i class="bx bxs-detail"></i></a>
+                  {% if request.user.is_superuser %}                  
+                  <a href="/ford/update-product/{{product.id}}" title="Editar producto"><i class="bx bx-pencil"></i></a> 
+                  <a href="/ford/delete-product/{{product.id}}" title="Borrar producto"><i class="bx bxs-trash"></i></a>                                    
+                  {% endif %}
                 </div>
               </div>
             </div>

@@ -1,19 +1,27 @@
 {% extends "padre.html" %}
 
-{% block titulo %}
-    Borrar Producto    
-{% endblock %}
-
 {% block bloqueQueCambia %}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
 
-<p>Nombre del producto: {{product.name}}</p>
-<p>Stock del producto: {{product.stock}}</p>
-<p>Precio del producto: ${{product.price}}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Borrar producto</h2>
+      </div>
 
-<form action="" method="POST">
-    {% csrf_token %}
+    </div>
+</section>
+<!-- End Breadcrumbs -->
 
-        <p><input type="submit" value="Borrar"></p>
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="col-lg-8 mt-5 mt-lg-0">
+            <p>Si esta seguro de esta acción, hace click en Borrar</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+        {% if request.user.is_superuser %}
+            <div class="text-left php-email-form" role="form"><button type="submit">Borrar</button></div>
+        {% endif %}
 </form>
 
 {% endblock bloqueQueCambia %}
