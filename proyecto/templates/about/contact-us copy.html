@@ -1,11 +1,8 @@
 {% extends "padre.html" %}
 
-{% block titulo %}
-    Contactanos!    
-{% endblock %}
-
 
 {% block bloqueQueCambia %}
+
 
 <form action="/about/contact-us/"  method="POST">
     {% csrf_token %}
